@@ -27,6 +27,7 @@ const editDistance = (string1, string2) => {
 		}
 	}
 
+	//We start here since 1st row is filled and iterate upto str2.length because thats the number of passes required.
 	for (let i = 1; i < string2.length + 1; i++) {
 		//upto str1.length because thats the no. of cols we have.
 		for (let j = 0; j < string1.length + 1; j++) {
