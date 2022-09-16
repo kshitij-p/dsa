@@ -4,6 +4,16 @@ const swap = (arr, index1, index2) => {
 	arr[index2] = temp;
 };
 
+/* 
+	Finds random between min (inclusive) and max (exclusive)
+	Check out the Math.random page on MDN for how the math works. 
+	*/
+const getRandomInt = (min, max) => {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min) + min);
+};
+
 const pivot = (arr, low, high) => {
 	let pivot = arr[high];
 	let newPos = low - 1;
@@ -23,9 +33,21 @@ const pivot = (arr, low, high) => {
 	return newPos;
 };
 
+/*
+	In both popular implementations of partitioning around a pivot,
+	random pivot can be obtained by swapping the item we normally use as pivot
+	with a random item. Random pivoting helps avoid worst case where pivot is the smallest or largest el in the array.
+*/
+const randomPivot = (arr, low, high) => {
+	let rand = getRandomInt(low, high);
+
+	swap(arr, rand, high);
+	return pivot(arr, low, high);
+};
+
 const quickSort = (arr, low = 0, high = arr.length - 1) => {
 	if (low < high) {
-		let pivotIndex = pivot(arr, low, high);
+		let pivotIndex = randomPivot(arr, low, high);
 
 		quickSort(arr, low, pivotIndex - 1); //sort smaller elements
 		quickSort(arr, pivotIndex + 1, high); //sort larger elements
