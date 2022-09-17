@@ -1,0 +1,23 @@
+{
+  "name": "dsa",
+  "version": "1.0.0",
+  "description": "Data structures and algos implemented by me for my reference.",
+  "main": "Trie.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kshitij-p/dsa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kshitij-p/dsa/issues"
+  },
+  "homepage": "https://github.com/kshitij-p/dsa#readme",
+  "devDependencies": {
+    "eslint": "^8.23.1",
+    "eslint-plugin-only-warn": "^1.0.3"
+  }
+}

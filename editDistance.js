@@ -12,7 +12,7 @@
 		The loop starts from i=1 coz we already filled the first row and goes upto str2.length because thats the number of passes required to get 
 		out final value.
 */
-const editDistance = (string1, string2) => {
+const editDistance = (string1, string2, maxDist = null) => {
 	let dp = new Array(2);
 
 	//initialize table but fill the fill the first row with j. So the first row is like 0,1,2,3,4...
@@ -37,6 +37,10 @@ const editDistance = (string1, string2) => {
 				dp[i % 2][j] = dp[(i - 1) % 2][j - 1];
 			} else {
 				dp[i % 2][j] = 1 + Math.min(dp[(i - 1) % 2][j], dp[i % 2][j - 1], dp[(i - 1) % 2][j - 1]);
+			}
+
+			if (maxDist && j > 0 && dp[i % 2][j] > maxDist) {
+				return null;
 			}
 		}
 	}
