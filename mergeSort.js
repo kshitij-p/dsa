@@ -1,5 +1,5 @@
 //Performs the merging step
-const merge = (leftHalf, rightHalf) => {
+const merge = (leftHalf, rightHalf, comp = (a, b) => a - b) => {
 	let result = [];
 
 	let leftStart = 0;
@@ -9,7 +9,7 @@ const merge = (leftHalf, rightHalf) => {
 		let leftEl = leftHalf[leftStart];
 		let rightEl = rightHalf[rightStart];
 
-		if (leftEl <= rightEl) {
+		if (comp(leftEl, rightEl) <= 0) {
 			result.push(leftEl);
 			leftStart++;
 		} else {
@@ -31,7 +31,7 @@ const merge = (leftHalf, rightHalf) => {
 	return result;
 };
 
-const mergeSort = (inputArray) => {
+const mergeSort = (inputArray, comp = (a, b) => a - b) => {
 	//handle edge cases
 	if (inputArray.length <= 1) {
 		return inputArray;
@@ -48,7 +48,5 @@ const mergeSort = (inputArray) => {
 		rightHalf.push(inputArray[j]);
 	}
 
-	return merge(mergeSort(leftHalf), mergeSort(rightHalf));
+	return merge(mergeSort(leftHalf, comp), mergeSort(rightHalf, comp), comp);
 };
-
-export default mergeSort;
